@@ -1,0 +1,271 @@
+/*
+===============================================
+  PERSONNALISATION DES TEXTES DU SITE
+  Modifiez les textes selon vos besoins
+===============================================
+*/
+
+// ===============================================
+// SECTION HERO (Page d'accueil)
+// ===============================================
+
+Fichier: index.html
+Lignes: 51-66
+
+TEXTE ACTUEL:
+- Sous-titre: "Bienvenue chez wvCreative"
+- Titre: "Graphiste & Web Designer"
+- Description: "Transformez vos idées en créations visuelles exceptionnelles..."
+- Bouton 1: "Voir mes créations"
+- Bouton 2: "Me contacter"
+
+COMMENT MODIFIER:
+Ouvrez index.html et cherchez la section avec class="hero-content"
+
+
+// ===============================================
+// SERVICES (Cartes de présentation)
+// ===============================================
+
+Fichier: index.html
+Lignes: 73-104
+
+SERVICE 1 - Design Graphique:
+- Titre: "Design Graphique"
+- Description: "Création d'identités visuelles, affiches..."
+- Tags: Beauté, Événement, E-commerce, Streaming
+
+SERVICE 2 - Web Design:
+- Titre: "Web Design"
+- Description: "Conception et développement de sites web..."
+- Tags: Sites Vitrines, E-commerce, Portfolios, Applications
+
+
+// ===============================================
+// TITRES DE SECTIONS
+// ===============================================
+
+RÉALISATIONS GRAPHIQUES:
+  Titre: "Réalisations Graphiques"
+  Sous-titre: "Découvrez mes créations graphiques dans différents domaines"
+
+RÉALISATIONS WEB:
+  Titre: "Réalisations Web"
+  Sous-titre: "Sites web créés avec passion et expertise technique"
+
+CONTACT:
+  Titre: "Contactez-moi"
+  Sous-titre: "Discutons de votre projet ensemble"
+
+
+// ===============================================
+// FOOTER (Pied de page)
+// ===============================================
+
+Fichier: index.html
+Lignes: 265-340
+
+TEXTES:
+- Slogan: "Graphiste & Web Designer passionné"
+- Copyright: "© 2026 wvCreative. Tous droits réservés."
+- Signature: "Fait avec ❤️ et 💻"
+
+
+// ===============================================
+// FORMULAIRE DE CONTACT
+// ===============================================
+
+Fichier: index.html
+Lignes: 223-259
+
+LABELS:
+- "Nom complet"
+- "Email"
+- "Sujet"
+- "Message"
+
+PLACEHOLDERS:
+- "Votre nom"
+- "votre@email.com"
+- "Décrivez votre projet..."
+
+OPTIONS SUJET:
+- Design Graphique
+- Web Design
+- Collaboration
+- Autre
+
+
+// ===============================================
+// NAVIGATION (Menu)
+// ===============================================
+
+Fichier: index.html
+Lignes: 27-37
+
+LIENS MENU:
+- Accueil
+- Design Graphique
+- Web Design
+- Contact
+- WhatsApp (bouton)
+
+
+// ===============================================
+// CATÉGORIES PORTFOLIO GRAPHIQUE
+// ===============================================
+
+Fichier: index.html
+Lignes: 117-142
+
+CATÉGORIES:
+1. Tout (affiche tous les projets)
+2. Beauté
+3. Événement
+4. Vente en ligne
+5. Streaming
+
+COMMENT MODIFIER:
+Les icônes et textes peuvent être changés dans index.html
+
+
+// ===============================================
+// TEXTES JAVASCRIPT (Projets)
+// ===============================================
+
+Fichier: script.js
+
+PROJETS GRAPHIQUES (Ligne 10):
+{
+    title: 'Votre titre',          // ← Titre du projet
+    description: 'Votre desc',     // ← Description
+    category: 'beaute'             // ← Catégorie
+}
+
+PROJETS WEB (Ligne 68):
+{
+    title: 'Nom du site',          // ← Nom
+    description: 'Description',    // ← Description
+}
+
+
+// ===============================================
+// MODIFIER LE NOM DE LA MARQUE
+// ===============================================
+
+Actuellement: "wvCreative"
+
+Pour changer partout:
+1. Ctrl+H (Rechercher/Remplacer)
+2. Rechercher: "wvCreative"
+3. Remplacer par: "VotreNom"
+4. Remplacer tout dans index.html
+
+
+// ===============================================
+// CHANGER LES INFORMATIONS DE CONTACT
+// ===============================================
+
+WHATSAPP: +237671170671
+Trouvez et remplacez par votre numéro
+
+EMAIL: wappi.vignoly@gmail.com
+Trouvez et remplacez par votre email
+
+LOCALISATIONS DANS LE CODE:
+- Ligne 36: Bouton header WhatsApp
+- Ligne 190: Carte contact WhatsApp
+- Ligne 200: Carte contact Email
+- Ligne 272: Footer
+- Ligne 345: Bouton flottant WhatsApp
+- script.js ligne 297: Formulaire WhatsApp
+
+
+// ===============================================
+// TEXTES DES CARTES DE CONTACT
+// ===============================================
+
+Fichier: index.html
+Lignes: 184-220
+
+CARTE WHATSAPP:
+- Titre: "WhatsApp"
+- Description: "Disponible pour discuter de vos projets"
+- Bouton: "+237 671 170 671"
+
+CARTE EMAIL:
+- Titre: "Email"
+- Description: "Envoyez-moi un message"
+- Bouton: "wappi.vignoly@gmail.com"
+
+CARTE LOCALISATION:
+- Titre: "Localisation"
+- Texte: "Cameroun"
+- Sous-texte: "Disponible pour projets locaux et internationaux"
+
+
+// ===============================================
+// MÉTA DESCRIPTIONS (SEO)
+// ===============================================
+
+Fichier: index.html
+Lignes: 6-8
+
+Actuellement:
+"wvCreative - Portfolio de graphiste et web designer professionnel..."
+
+Pour modifier:
+Changez le content de la balise meta description
+
+
+// ===============================================
+// TITRE DE LA PAGE (Onglet navigateur)
+// ===============================================
+
+Fichier: index.html
+Ligne: 10
+
+Actuellement: "wvCreative - Graphiste & Web Designer"
+
+Pour modifier:
+Changez le contenu de la balise <title>
+
+
+// ===============================================
+// EXEMPLE DE PERSONNALISATION COMPLÈTE
+// ===============================================
+
+AVANT:
+<p class="hero-subtitle">Bienvenue chez wvCreative</p>
+<h1 class="hero-title">Graphiste & Web Designer</h1>
+
+APRÈS (exemple):
+<p class="hero-subtitle">Bienvenue chez MonNom</p>
+<h1 class="hero-title">Créatif Digital Passionné</h1>
+
+
+// ===============================================
+// CONSEILS
+// ===============================================
+
+✅ Sauvegardez toujours avant de modifier
+✅ Testez après chaque modification
+✅ Gardez les balises HTML intactes
+✅ Respectez les guillemets " "
+✅ Ne modifiez que le texte entre les balises
+
+❌ Ne supprimez pas les classes CSS
+❌ Ne modifiez pas la structure HTML
+❌ Ne touchez pas aux balises <div>, <section>, etc.
+
+
+// ===============================================
+// BESOIN D'AIDE ?
+// ===============================================
+
+Email: wappi.vignoly@gmail.com
+WhatsApp: +237 671 170 671
+
+Ou consultez:
+- README.md pour la documentation complète
+- INDEX.md pour naviguer dans les fichiers

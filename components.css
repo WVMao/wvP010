@@ -1,0 +1,675 @@
+/* ==============================================
+   wvCreative - Light Theme Components
+   ============================================== */
+
+/* ============== LAZY LOADING OPTIMIZATIONS ============== */
+/* États de chargement des images */
+img[data-src],
+img[loading="lazy"] {
+    background: linear-gradient(45deg, #f1f5f9 25%, #e2e8f0 50%, #f1f5f9 75%);
+    background-size: 200% 100%;
+}
+
+/* Animation de chargement shimmer */
+img.lazy-loading {
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+/* Image chargée avec succès */
+img.lazy-loaded {
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Erreur de chargement */
+img.lazy-error {
+    background: #fee2e2;
+    border: 2px dashed #ef4444;
+    min-height: 200px;
+    display: block;
+}
+
+/* Container pour afficher l'erreur (le ::after ne fonctionne pas sur img) */
+.image-error-container {
+    position: relative;
+    background: #fee2e2;
+    border: 2px dashed #ef4444;
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-error-container::after {
+    content: '⚠️ Image non disponible';
+    color: #991b1b;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-align: center;
+    padding: 1rem;
+}
+
+
+/* ============== GLASS CARD (LIGHT) ============== */
+.glass-card {
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 24px;
+    padding: 2.5rem;
+    box-shadow: var(--shadow-md);
+    transition: all 0.4s var(--bounce);
+    position: relative;
+    overflow: hidden;
+}
+
+.glass-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-hover);
+    border-color: transparent;
+}
+
+/* ============== SERVICE CARDS ============== */
+.service-card {
+    text-align: center;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.service-icon {
+    width: 90px;
+    height: 90px;
+    margin: 0 auto 2rem;
+    background: linear-gradient(135deg, rgba(0, 102, 255, 0.1) 0%, rgba(0, 204, 136, 0.1) 100%);
+    border-radius: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    color: var(--primary-blue);
+    transition: transform 0.5s ease;
+}
+
+.service-card:hover .service-icon {
+    transform: scale(1.1) rotate(5deg);
+    background: var(--gradient-primary);
+    color: white;
+    box-shadow: 0 10px 20px rgba(0, 102, 255, 0.3);
+}
+
+.service-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.tag {
+    padding: 0.5rem 1.2rem;
+    background: #F1F5F9;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    transition: 0.3s;
+}
+
+.service-card:hover .tag {
+    background: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    color: var(--primary-green);
+}
+
+/* ============== PORTFOLIO ============== */
+.category-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 4rem;
+}
+
+.category-tab {
+    padding: 0.8rem 2rem;
+    background: white;
+    border: 1px solid #E2E8F0;
+    border-radius: 50px;
+    color: var(--text-secondary);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s var(--bounce);
+    font-family: var(--font-heading);
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.category-tab:hover {
+    transform: translateY(-2px);
+    color: var(--primary-blue);
+    border-color: var(--primary-blue);
+}
+
+.category-tab.active {
+    background: var(--primary-blue);
+    color: white;
+    border-color: var(--primary-blue);
+    box-shadow: 0 10px 20px -5px rgba(0, 102, 255, 0.4);
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2.5rem;
+}
+
+.portfolio-item {
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    /* CHANGEMENT: Hauteur automatique pour wrapper l'image entière */
+    height: auto;
+    min-height: 300px;
+    /* Minimum pour la cohérence */
+    box-shadow: var(--shadow-md);
+    transition: transform 0.4s var(--bounce);
+    cursor: pointer;
+    background: white;
+    display: flex;
+    flex-direction: column;
+}
+
+.portfolio-item:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: var(--shadow-lg);
+    z-index: 10;
+}
+
+.portfolio-image {
+    width: 100%;
+    height: 100%;
+    /* CHANGEMENT: Contain + Block pour tout afficher */
+    object-fit: contain;
+    background: #f8fafc;
+    /* Fond léger en cas de format spécial */
+    display: block;
+}
+
+.portfolio-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 2rem;
+    /* Gradient beaucoup plus visible pour le texte */
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 10%, rgba(0, 0, 0, 0.8) 50%, transparent 100%);
+    color: white;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all 0.4s ease;
+    /* Ombre portée pour garantir la lecture */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.portfolio-item:hover .portfolio-overlay {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* FORCER LE TEXTE EN BLANC */
+.portfolio-overlay h3,
+.portfolio-overlay p,
+.portfolio-title,
+.portfolio-description {
+    color: #ffffff !important;
+    /* Force le blanc pur */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
+    /* Ombre forte */
+}
+
+.portfolio-description {
+    opacity: 0.95;
+    /* Légère transparence pour la hiérarchie, mais très lisible */
+}
+
+.portfolio-category {
+    background: var(--primary-green);
+    color: white;
+    padding: 0.3rem 1rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    display: inline-block;
+    margin-bottom: 0.5rem;
+}
+
+/* ============== WEB SPECIFIC EFFECTS ============== */
+.web-item {
+    perspective: 1000px;
+}
+
+.web-item:hover {
+    transform: translateY(-15px) scale(1.02) !important;
+    box-shadow: 0 40px 80px -15px rgba(0, 102, 255, 0.4) !important;
+}
+
+/* Forcer l'affichage de l'overlay au survol */
+.web-item:hover .portfolio-overlay {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    visibility: visible !important;
+}
+
+.web-item .portfolio-image {
+    transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Cover pour un look plus pro en web */
+}
+
+.web-item:hover .portfolio-image {
+    transform: scale(1.1);
+}
+
+/* Animation flottante douce pour la section web */
+.web-item {
+    animation: floatCard 6s ease-in-out infinite;
+}
+
+.web-item:nth-child(even) {
+    animation-delay: 2s;
+}
+
+@keyframes floatCard {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.web-item .portfolio-overlay {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 100%;
+    z-index: 10;
+    visibility: hidden;
+    /* Cacher proprement */
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.view-image-trigger:hover {
+    background: white;
+    color: var(--primary-blue) !important;
+}
+
+.btn-visit-site {
+    transition: all 0.3s ease;
+}
+
+.btn-visit-site:hover {
+    transform: scale(1.05);
+    background: white !important;
+    color: var(--primary-green) !important;
+}
+
+/* ============== CONTACT ============== */
+.contact-section {
+    background: linear-gradient(180deg, #F8FAFC 0%, #FFFFFF 100%);
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 4rem;
+}
+
+.contact-icon {
+    width: 64px;
+    height: 64px;
+    background: rgba(0, 102, 255, 0.1);
+    color: var(--primary-blue);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.contact-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 1.2rem;
+    background: #F8FAFC;
+    border: 1px solid #E2E8F0;
+    border-radius: 12px;
+    font-family: inherit;
+    font-size: 1rem;
+    transition: 0.3s;
+    color: var(--text-main);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-blue);
+    background: white;
+    box-shadow: 0 0 0 4px rgba(0, 102, 255, 0.1);
+}
+
+.btn-whatsapp {
+    background: #25D366;
+    color: white;
+    box-shadow: 0 10px 20px -5px rgba(37, 211, 102, 0.4);
+    border: none;
+    /* Suppression du contour noir */
+    cursor: pointer;
+}
+
+.btn-whatsapp:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px -5px rgba(37, 211, 102, 0.5);
+}
+
+/* ============== FOOTER ============== */
+.footer {
+    background: #0F172A;
+    /* Garder le footer foncé pour le contraste */
+    color: white;
+    padding: 6rem 0 2rem;
+}
+
+.footer-brand p {
+    color: var(--text-light);
+}
+
+.social-link {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.social-link:hover {
+    background: var(--primary-green);
+    transform: translateY(-3px);
+}
+
+.footer-column h4 {
+    color: white;
+    margin-bottom: 1.5rem;
+}
+
+.footer-column ul li a {
+    color: var(--text-light);
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.footer-column ul li a:hover {
+    color: white;
+    padding-left: 5px;
+}
+
+/* ============== FLOATING WHATSAPP ============== */
+.whatsapp-float {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background: #25D366;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+    z-index: 1000;
+    transition: 0.4s var(--bounce);
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1) rotate(15deg);
+}
+
+/* ============== MODAL / LIGHTBOX ============== */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(10px);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal.active {
+    opacity: 1;
+}
+
+.modal-content {
+    max-width: 90%;
+    max-height: 80vh;
+    border-radius: 20px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    object-fit: contain;
+    transform: scale(0.9);
+    transition: transform 0.4s var(--bounce);
+}
+
+.modal.active .modal-content {
+    transform: scale(1);
+}
+
+.modal-close {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    width: 50px;
+    height: 50px;
+    background: white;
+    color: var(--primary-blue);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+}
+
+.modal-close:hover {
+    transform: rotate(90deg) scale(1.1);
+    background: var(--primary-blue);
+    color: white;
+}
+
+.modal-info {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    color: white;
+    width: 100%;
+    padding: 0 2rem;
+}
+
+.modal-info h3 {
+    color: white;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.modal-info p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1rem;
+}
+
+/* ============== TESTIMONIALS ============== */
+.testimonial-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.testimonial-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.client-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.client-info h4 {
+    font-size: 1.1rem;
+    margin-bottom: 0.1rem;
+    color: var(--text-main);
+}
+
+.client-info span {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.testimonial-rating {
+    margin-bottom: 1rem;
+    color: #FBBF24;
+    /* Amber/Gold color for stars */
+    font-size: 0.9rem;
+}
+
+.testimonial-text {
+    color: var(--text-secondary);
+    font-style: italic;
+    font-size: 1.05rem;
+    line-height: 1.7;
+}
+
+/* Quote icon decorative element */
+.testimonial-card::before {
+    content: '\201C';
+    /* Large quote char */
+    position: absolute;
+    top: 1rem;
+    right: 2rem;
+    font-size: 5rem;
+    color: rgba(0, 102, 255, 0.05);
+    font-family: serif;
+    line-height: 1;
+}
+
+.testimonial-card:hover::before {
+    color: rgba(0, 102, 255, 0.1);
+}
+
+/* ============== RESPONSIVE CORRECTIONS ============== */
+/* Make Contact Section responsive - Force stacking earlier */
+@media (max-width: 1200px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .contact-info {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .contact-info {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-card,
+    .contact-form,
+    .testimonial-card {
+        padding: 1.5rem;
+    }
+
+    .testimonial-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .section-title h2 {
+        font-size: 2rem;
+    }
+}

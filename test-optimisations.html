@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test des Optimisations - ViaDesign</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: #f8fafc;
+        }
+
+        .test-card {
+            background: white;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .test-card h3 {
+            color: #0066FF;
+            margin-top: 0;
+        }
+
+        .status {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        .status.success {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .status.error {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        button {
+            background: #0066FF;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-right: 0.5rem;
+        }
+
+        button:hover {
+            background: #0052cc;
+        }
+
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .metric {
+            background: #f1f5f9;
+            padding: 1rem;
+            border-radius: 6px;
+        }
+
+        .metric-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #0066FF;
+        }
+
+        .metric-label {
+            font-size: 0.875rem;
+            color: #64748b;
+            margin-top: 0.25rem;
+        }
+
+        pre {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 1rem;
+            border-radius: 6px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>🚀 Test des Optimisations de Performance</h1>
+    <p>Cette page teste toutes les optimisations appliquées au site ViaDesign.</p>
+
+    <!-- Test 1: Utilitaires chargés -->
+    <div class="test-card">
+        <h3>1. Chargement des Utilitaires</h3>
+        <div id="utils-status"></div>
+    </div>
+
+    <!-- Test 2: Debounce & Throttle -->
+    <div class="test-card">
+        <h3>2. Debounce & Throttle</h3>
+        <button id="test-debounce">Tester Debounce</button>
+        <button id="test-throttle">Tester Throttle</button>
+        <div id="debounce-result" style="margin-top: 1rem;"></div>
+    </div>
+
+    <!-- Test 3: Cache -->
+    <div class="test-card">
+        <h3>3. Système de Cache</h3>
+        <button id="test-cache-set">Enregistrer dans Cache</button>
+        <button id="test-cache-get">Lire depuis Cache</button>
+        <button id="test-cache-clear">Vider Cache</button>
+        <div id="cache-result" style="margin-top: 1rem;"></div>
+    </div>
+
+    <!-- Test 4: Rate Limiter -->
+    <div class="test-card">
+        <h3>4. Rate Limiting</h3>
+        <button id="test-rate-limit">Envoyer 10 requêtes rapides</button>
+        <div id="rate-limit-result" style="margin-top: 1rem;"></div>
+    </div>
+
+    <!-- Test 5: Lazy Loading -->
+    <div class="test-card">
+        <h3>5. Lazy Loading des Images</h3>
+        <button id="test-lazy">Charger image en lazy</button>
+        <div id="lazy-result" style="margin-top: 1rem;"></div>
+    </div>
+
+    <!-- Test 6: Performance Monitor -->
+    <div class="test-card">
+        <h3>6. Métriques de Performance</h3>
+        <div id="perf-metrics" class="metrics"></div>
+    </div>
+
+    <!-- Performance Utilities -->
+    <script src="performance-utils.js"></script>
+
+    <script>
+        // Test 1: Vérifier chargement
+        const utilsStatus = document.getElementById('utils-status');
+        if (window.PerformanceUtils) {
+            utilsStatus.innerHTML = '<span class="status success">✓ Tous les utilitaires chargés</span>';
+        } else {
+            utilsStatus.innerHTML = '<span class="status error">✗ Erreur de chargement</span>';
+        }
+
+        // Test 2: Debounce & Throttle
+        let debounceCount = 0;
+        let throttleCount = 0;
+
+        const debounceBtn = document.getElementById('test-debounce');
+        const throttleBtn = document.getElementById('test-throttle');
+        const debounceResult = document.getElementById('debounce-result');
+
+        const debouncedFn = window.PerformanceUtils.debounce(() => {
+            debounceCount++;
+            debounceResult.innerHTML = `<strong>Debounce:</strong> Fonction appelée ${debounceCount} fois (devrait être 1)`;
+        }, 300);
+
+        const throttledFn = window.PerformanceUtils.throttle(() => {
+            throttleCount++;
+            debounceResult.innerHTML += `<br><strong>Throttle:</strong> Fonction appelée ${throttleCount} fois (devrait être ~3)`;
+        }, 100);
+
+        debounceBtn.addEventListener('click', () => {
+            debounceCount = 0;
+            for (let i = 0; i < 10; i++) {
+                debouncedFn();
+            }
+        });
+
+        throttleBtn.addEventListener('click', () => {
+            throttleCount = 0;
+            for (let i = 0; i < 10; i++) {
+                throttledFn();
+            }
+        });
+
+        // Test 3: Cache
+        const cache = new window.PerformanceUtils.DataCache(5000); // 5 secondes
+        const cacheResult = document.getElementById('cache-result');
+
+        document.getElementById('test-cache-set').addEventListener('click', () => {
+            const data = { name: 'ViaDesign', timestamp: Date.now() };
+            cache.set('test-data', data);
+            cacheResult.innerHTML = `<span class="status success">✓ Données enregistrées</span><br><pre>${JSON.stringify(data, null, 2)}</pre>`;
+        });
+
+        document.getElementById('test-cache-get').addEventListener('click', () => {
+            const data = cache.get('test-data');
+            if (data) {
+                cacheResult.innerHTML = `<span class="status success">✓ Données récupérées</span><br><pre>${JSON.stringify(data, null, 2)}</pre>`;
+            } else {
+                cacheResult.innerHTML = '<span class="status error">✗ Aucune donnée (expiré ou vide)</span>';
+            }
+        });
+
+        document.getElementById('test-cache-clear').addEventListener('click', () => {
+            cache.clear();
+            cacheResult.innerHTML = '<span class="status success">✓ Cache vidé</span>';
+        });
+
+        // Test 4: Rate Limiter
+        const rateLimiter = new window.PerformanceUtils.RateLimiter(5, 5000); // 5 appels max en 5 secondes
+        const rateLimitResult = document.getElementById('rate-limit-result');
+
+        document.getElementById('test-rate-limit').addEventListener('click', () => {
+            let allowed = 0;
+            let blocked = 0;
+
+            for (let i = 0; i < 10; i++) {
+                if (rateLimiter.canCall()) {
+                    allowed++;
+                } else {
+                    blocked++;
+                }
+            }
+
+            rateLimitResult.innerHTML = `
+                <span class="status success">✓ Autorisées: ${allowed}</span>
+                <span class="status error">✗ Bloquées: ${blocked}</span><br>
+                <small>Requêtes restantes: ${rateLimiter.getRemainingCalls()}</small><br>
+                <small>Reset dans: ${Math.ceil(rateLimiter.getResetTime() / 1000)}s</small>
+            `;
+        });
+
+        // Test 5: Lazy Loading
+        const lazyLoader = new window.PerformanceUtils.LazyImageLoader();
+        const lazyResult = document.getElementById('lazy-result');
+
+        document.getElementById('test-lazy').addEventListener('click', () => {
+            const img = document.createElement('img');
+            img.dataset.src = 'https://picsum.photos/400/300';
+            img.alt = 'Test lazy loading';
+            img.style.width = '100%';
+            img.style.maxWidth = '400px';
+            img.style.borderRadius = '8px';
+
+            lazyResult.innerHTML = '';
+            lazyResult.appendChild(img);
+
+            lazyLoader.observe(img);
+
+            lazyResult.insertAdjacentHTML('beforeend', '<br><span class="status success">✓ Image en lazy loading...</span>');
+        });
+
+        // Test 6: Performance Monitor
+        const perfMonitor = new window.PerformanceUtils.PerformanceMonitor();
+        perfMonitor.init();
+
+        setTimeout(() => {
+            const metrics = perfMonitor.getMetrics();
+            const perfMetrics = document.getElementById('perf-metrics');
+
+            perfMetrics.innerHTML = `
+                <div class="metric">
+                    <div class="metric-value">${(metrics.pageLoadTime / 1000).toFixed(2)}s</div>
+                    <div class="metric-label">Temps de chargement</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">${(metrics.domInteractive / 1000).toFixed(2)}s</div>
+                    <div class="metric-label">DOM Interactive</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">${(metrics.firstContentfulPaint / 1000).toFixed(2)}s</div>
+                    <div class="metric-label">First Paint</div>
+                </div>
+            `;
+        }, 1000);
+    </script>
+</body>
+
+</html>
