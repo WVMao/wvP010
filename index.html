@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="ViaDesign - Portfolio de graphiste et web designer professionnel. Design moderne, création de sites web et identités visuelles.">
+    <title>ViaDesign - Graphiste & Web Designer Pro</title>
+
+    <!-- Design & Styles -->
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="components.css">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- 🌊 DYNAMIC BACKGROUND 🌊 -->
+    <div class="bg-shape shape-1"></div>
+    <div class="bg-shape shape-2"></div>
+    <div class="bg-shape shape-3"></div>
+
+    <!-- ============== HEADER ============== -->
+    <header class="header" id="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="#" class="logo">
+                    <i class="fas fa-layer-group"></i>
+                    ViaDesign
+                </a>
+
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="#accueil" class="nav-link">Accueil</a></li>
+                    <li><a href="#graphique" class="nav-link">Graphisme</a></li>
+                    <li><a href="#web" class="nav-link">Web Design</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                    <li>
+                        <a href="https://wa.me/237671170671" class="btn btn-primary"
+                            style="padding: 0.6rem 1.5rem; font-size: 0.9rem;" target="_blank">
+                            <i class="fab fa-whatsapp"></i> WhatsApp
+                        </a>
+                    </li>
+                </ul>
+
+                <button class="nav-toggle" id="navToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ============== HERO SECTION ============== -->
+    <section class="hero" id="accueil">
+        <div class="container">
+            <div class="hero-content">
+                <span class="hero-badge">✨ Disponible pour nouveaux projets</span>
+                <h1>Graphiste & <br>Web Designer</h1>
+                <p class="hero-description">
+                    Je transforme vos idées en expériences digitales mémorables. Spécialisé en design d'interface,
+                    identité de marque et développement web moderne.
+                </p>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <a href="#graphique" class="btn btn-primary">
+                        Voir mon travail <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="#contact" class="btn btn-secondary">
+                        <i class="far fa-envelope"></i> Me contacter
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============== SERVICES ============== -->
+    <section class="section" id="services">
+        <div class="container">
+            <div class="portfolio-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+                <div class="glass-card service-card">
+                    <div>
+                        <div class="service-icon">
+                            <i class="fas fa-pencil-ruler"></i>
+                        </div>
+                        <h3>Design Graphique</h3>
+                        <p>Création visuelle percutante pour votre marque. Logos, affiches, flyers et packaging qui
+                            racontent votre histoire.</p>
+                    </div>
+                    <div class="service-tags">
+                        <span class="tag">Logos</span>
+                        <span class="tag">Flyers</span>
+                        <span class="tag">Packaging</span>
+                        <span class="tag">Branding</span>
+                    </div>
+                </div>
+
+                <div class="glass-card service-card">
+                    <div>
+                        <div class="service-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3>Web Design</h3>
+                        <p>Sites web modernes, rapides et responsives. Du site vitrine au e-commerce, je crée votre
+                            présence en ligne.</p>
+                    </div>
+                    <div class="service-tags">
+                        <span class="tag">Site Vitrine</span>
+                        <span class="tag">E-commerce</span>
+                        <span class="tag">Landing Page</span>
+                        <span class="tag">UI/UX</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============== GRAPHIC PORTFOLIO ============== -->
+    <section class="section" id="graphique">
+        <div class="container">
+            <div class="section-title">
+                <h2>Portfolio Graphique</h2>
+                <p style="max-width: 700px; margin: 0 auto; color: var(--text-secondary);">
+                    Explorez une collection de designs uniques où chaque visuel raconte une histoire.
+                    De l'identité de marque percutante aux supports marketing créatifs, je donne vie à votre vision avec
+                    passion et précision.
+                </p>
+            </div>
+
+            <div class="category-tabs">
+                <button class="category-tab active" data-category="all">Tout voir</button>
+                <button class="category-tab" data-category="beaute"><i class="fas fa-spa"></i> Beauté</button>
+                <button class="category-tab" data-category="evenement"><i class="fas fa-music"></i> Événement</button>
+                <button class="category-tab" data-category="vente"><i class="fas fa-shopping-bag"></i> Vente</button>
+                <button class="category-tab" data-category="streaming"><i class="fas fa-gamepad"></i> Streaming</button>
+                <button class="category-tab" data-category="cuisine"><i class="fas fa-utensils"></i> Cuisine</button>
+                <button class="category-tab" data-category="sport"><i class="fas fa-running"></i> Sport</button>
+                <button class="category-tab" data-category="business"><i class="fas fa-briefcase"></i> Business</button>
+                <button class="category-tab" data-category="autre"><i class="fas fa-layer-group"></i> Autre</button>
+            </div>
+
+            <div class="portfolio-grid" id="graphicPortfolio">
+                <!-- Javascript will load items -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ============== WEB PORTFOLIO ============== -->
+    <section class="section" id="web" style="background: rgba(0, 102, 255, 0.03);">
+        <div class="container">
+            <div class="section-title">
+                <h2>Réalisations Web</h2>
+                <p style="max-width: 700px; margin: 0 auto; color: var(--text-secondary);">
+                    Des sites web sur-mesure alliant performance technique et esthétique raffinée.
+                    Que ce soit pour une vitrine élégante ou une boutique en ligne performante, je conçois des
+                    expériences digitales inoubliables.
+                </p>
+            </div>
+
+            <div class="portfolio-grid" id="webPortfolio">
+                <!-- Javascript will load items -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ============== TESTIMONIALS ============== -->
+    <section class="section" id="temoignages"
+        style="background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(0, 102, 255, 0.05) 100%);">
+        <div class="container">
+            <div class="section-title">
+                <h2>Ce qu'ils disent de moi</h2>
+                <p>La satisfaction de mes clients est ma plus belle réussite</p>
+            </div>
+
+            <div class="portfolio-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+
+                <!-- Témoignage 1 -->
+                <div class="glass-card testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="client-avatar" style="background: #E0F2FE; color: #0066FF;">
+                            <span>JP</span>
+                        </div>
+                        <div class="client-info">
+                            <h4>Jean-Pierre Mbarga</h4>
+                            <span>CEO, TechCamer S.A.</span>
+                        </div>
+                    </div>
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                            class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">
+                        "Un travail exceptionnel pour notre identité visuelle. Le logo capture parfaitement l'essence de
+                        l'innovation au Cameroun. Professionnel et à l'écoute."
+                    </p>
+                </div>
+
+                <!-- Témoignage 2 -->
+                <div class="glass-card testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="client-avatar" style="background: #DCFCE7; color: #00CC88;">
+                            <span>AD</span>
+                        </div>
+                        <div class="client-info">
+                            <h4>Aminata Diallo</h4>
+                            <span>Fondatrice, BeautyAfrik</span>
+                        </div>
+                    </div>
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                            class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">
+                        "Le site e-commerce qu'il a conçu a transformé notre business. Le design est moderne, épuré et
+                        nos ventes ont décollé. Je recommande vivement !"
+                    </p>
+                </div>
+
+                <!-- Témoignage 3 -->
+                <div class="glass-card testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="client-avatar" style="background: #F3E8FF; color: #9333EA;">
+                            <span>SK</span>
+                        </div>
+                        <div class="client-info">
+                            <h4>Samuel Kotto</h4>
+                            <span>Event Manager, Yaoundé</span>
+                        </div>
+                    </div>
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                            class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p class="testimonial-text">
+                        "Les affiches pour notre festival étaient simplement magnifiques. Une créativité débordante et
+                        un respect des délais qui se fait rare. Merci ViaDesign !"
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ============== CONTACT ============== -->
+    <section class="section contact-section" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Démarrons un projet</h2>
+                <p>N'hésitez pas à me contacter pour discuter de vos idées</p>
+            </div>
+
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-card glass-card">
+                        <div class="contact-icon">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <h3>WhatsApp Direct</h3>
+                        <p>Réponse rapide assurée</p>
+                        <a href="https://wa.me/237671170671" class="btn btn-whatsapp"
+                            style="width: 100%; justify-content: center;" target="_blank">
+                            Discuter maintenant
+                        </a>
+                    </div>
+
+                    <div class="contact-card glass-card" style="margin-top: 2rem;">
+                        <div class="contact-icon"
+                            style="background: rgba(0, 204, 136, 0.1); color: var(--primary-green);">
+                            <i class="fas fa-paper-plane"></i>
+                        </div>
+                        <h3>Email</h3>
+                        <p style="margin-bottom: 1.5rem;">wappi.vignoly@gmail.com</p>
+                        <a href="mailto:wappi.vignoly@gmail.com" class="btn btn-secondary"
+                            style="width: 100%; justify-content: center; color: var(--primary-green); border-color: rgba(0, 204, 136, 0.2);">
+                            M'écrire <i class="fas fa-envelope" style="margin-left:8px;"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="contact-form-wrapper">
+                    <form class="glass-card" id="contactForm">
+                        <div class="form-group">
+                            <label style="display:block; margin-bottom:0.5rem; font-weight:600;">Votre Nom</label>
+                            <input type="text" id="name" required placeholder="Comment vous appelez-vous ?">
+                        </div>
+
+                        <div class="form-group">
+                            <label style="display:block; margin-bottom:0.5rem; font-weight:600;">Email</label>
+                            <input type="email" id="email" required placeholder="Votre adresse email">
+                        </div>
+
+                        <div class="form-group">
+                            <label style="display:block; margin-bottom:0.5rem; font-weight:600;">Sujet</label>
+                            <select id="subject" required>
+                                <option>Projet Design Graphique</option>
+                                <option>Projet Site Web</option>
+                                <option>Renseignement</option>
+                                <option>Autre</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label style="display:block; margin-bottom:0.5rem; font-weight:600;">Message</label>
+                            <textarea id="message" rows="4" required
+                                placeholder="Parlez-moi de votre projet..."></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">
+                            Envoyer le message <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============== FOOTER ============== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content"
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 3rem; margin-bottom: 3rem;">
+                <div class="footer-brand">
+                    <h3 class="logo" style="color: white; margin-bottom: 1rem;">ViaDesign</h3>
+                    <p>Création digitale premium au Cameroun.</p>
+                    <div style="display: flex; gap: 1rem; margin-top: 1.5rem;">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Navigation</h4>
+                    <ul style="list-style: none;">
+                        <li style="margin-bottom: 0.8rem;"><a href="#accueil">Accueil</a></li>
+                        <li style="margin-bottom: 0.8rem;"><a href="#graphique">Portfolio Graphique</a></li>
+                        <li style="margin-bottom: 0.8rem;"><a href="#web">Portfolio Web</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Contact</h4>
+                    <ul style="list-style: none;">
+                        <li style="margin-bottom: 0.8rem; color: #94A3B8;"><i class="fab fa-whatsapp"
+                                style="margin-right: 10px;"></i> +237 671 170 671</li>
+                        <li style="margin-bottom: 0.8rem; color: #94A3B8;"><i class="fas fa-envelope"
+                                style="margin-right: 10px;"></i> wappi.vignoly@gmail.com</li>
+                        <li style="margin-bottom: 0.8rem; color: #94A3B8;"><i class="fas fa-map-marker-alt"
+                                style="margin-right: 10px;"></i> Cameroun</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div
+                style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem; text-align: center; color: #64748B; font-size: 0.9rem;">
+                <p>&copy; 2026 ViaDesign. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp -->
+    <a href="https://wa.me/237671170671" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="modal" style="display: none;">
+        <button class="modal-close" id="closeLightbox"><i class="fas fa-times"></i></button>
+        <img src="" alt="" class="modal-content" id="lightboxImg">
+        <div class="modal-info">
+            <h3 id="lightboxTitle"></h3>
+            <p id="lightboxDesc"></p>
+        </div>
+    </div>
+
+    <!-- Performance Utilities (CHARGER EN PREMIER) -->
+    <script src="performance-utils.js"></script>
+    <!-- Main Script -->
+    <script src="script.js"></script>
+    <!-- Diagnostic Tool (A supprimer une fois corrigé) -->
+    <script src="debug-gh-pages.js"></script>
+</body>
+
+</html>
